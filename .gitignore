@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite / Vue
+.vite/
+src/manifest.json
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Capacitor
+# It's recommended to commit the ios/ and android/ directories.
+# However, we should ignore build and environment-specific files within them.
+ios/App/build/
+ios/App/Pods/
+ios/App/Frameworks/
+android/build/
+android/.gradle/
+android/app/build/
+android/.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
