@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. 이슈 사항.md",
+                "file": "3. 기술 정리.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3. 이슈 사항"
+              "title": "3. 기술 정리"
             }
           }
         ]
@@ -185,8 +185,8 @@
   },
   "active": "32dbf26c517884b0",
   "lastOpenFiles": [
-    "4. 기술 정리.md",
-    "3. 이슈 사항.md",
+    "2. 이슈 사항.md",
+    "3. 기술 정리.md",
     "2. 진행 기록.md",
     "1. 프로젝트 개요.md",
     "환영합니다!.md"
