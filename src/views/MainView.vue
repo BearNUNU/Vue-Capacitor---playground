@@ -30,7 +30,7 @@
         <h2 class="section-title">🔋 Status Bar</h2>
         <div class="flex gap-2">
           <button @click="hideStatusBar" class="btn btn-primary flex-1">숨기기</button>
-          <button @click="changeStatusBarColor" class="btn btn-outline flex-1">색상 변경</button>
+          <button @click="showStatusBar" class="btn btn-outline flex-1">보이기</button>
         </div>
       </section>
 
@@ -85,7 +85,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { isApp, isAndroid, isIOS, isWeb } from '@/utils/native'
-import { nativeHaptic } from '@/utils/capacitorModule'
+import { nativeHaptic, setStatusBarVisible } from '@/utils/capacitorModule'
 
 const router = useRouter()
 
@@ -107,10 +107,19 @@ const lockLandscape = () => {
 
 // ===== 3. Status Bar 제어 =====
 const hideStatusBar = () => {
-  console.log('[Native] 상태바 숨기기')
+ if(isApp()){
+  setStatusBarVisible(false)
+ }else{
+  alert('이 기능은 앱에서만 작동합니다.')
+ }
 }
-const changeStatusBarColor = () => {
-  console.log('[Native] 상태바 색상 변경 (예: #000000)')
+
+const showStatusBar = () => {
+ if(isApp()){
+  setStatusBarVisible(true)
+ }else{
+  alert('이 기능은 앱에서만 작동합니다.')
+ }
 }
 
 // ===== 4. 키보드 제어 =====

@@ -5,5 +5,14 @@
 </template>
 
 <script setup lang="ts">
-// 루트 레이아웃용 컴포넌트
+import { onMounted } from 'vue'
+import { isApp } from '@/utils/native'
+import { setStatusBarVisible } from '@/utils/capacitorModule'
+
+// 앱 초기 구동 시 상태바 강제 표시
+onMounted(async () => {
+  if (isApp()) {
+    await setStatusBarVisible(true)
+  }
+})
 </script>
