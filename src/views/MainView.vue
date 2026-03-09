@@ -84,6 +84,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { isApp, isAndroid, isIOS, isWeb } from '@/utils/native'
+import { nativeHaptic } from '@/utils/capacitorModule'
 
 const router = useRouter()
 
@@ -119,6 +121,11 @@ const forceHideKeyboard = () => {
 // ===== 5. 햅틱 (진동) =====
 const triggerHaptic = () => {
   console.log('[Native] 가벼운 진동(Haptic) 발생')
+  if (isApp()) {
+    nativeHaptic()
+} else {
+    alert('이 기능은 앱에서만 작동합니다.')
+}
 }
 
 // ===== 6. 보안 저장소 =====
