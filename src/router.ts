@@ -1,18 +1,21 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import MainView from './views/MainView.vue'
-import ClassDetailView from './views/ClassDetailView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: MainView
+    path: '/login',
+    name: 'Login',
+    component: () => import('./views/LoginView.vue')
   },
   {
-    path: '/class/:id',
-    name: 'ClassDetail',
-    component: ClassDetailView,
-  }
+    path: '/',
+    name: 'Home',
+    component: () => import('./views/MainView.vue')
+  },
+  {
+    path: '/sub-webview',
+    name: 'SubWebView',
+    component: () => import('./views/SubWebViewTest.vue')
+  },
 ]
 
 const router = createRouter({

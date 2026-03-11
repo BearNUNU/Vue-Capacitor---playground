@@ -16,7 +16,8 @@
     "@capacitor/ios": "^8.2.0",
     "@capacitor/status-bar": "^8.0.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "capacitor-multi-webview": "file:./capacitor-multi-webview"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
