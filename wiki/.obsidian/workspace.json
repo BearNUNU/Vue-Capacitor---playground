@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "4. 자체 제작 플러그인.md",
+                "file": "4. MultiWebView 커스텀 플러그인 개발.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. 자체 제작 플러그인"
+              "title": "4. MultiWebView 커스텀 플러그인 개발"
             }
           }
         ]
@@ -185,10 +185,11 @@
   },
   "active": "32dbf26c517884b0",
   "lastOpenFiles": [
-    "3. 기술 정리.md",
     "4. 자체 제작 플러그인.md",
-    "4. 목표 기능.md",
+    "4. MultiWebView 커스텀 플러그인 개발.md",
     "1. 프로젝트 개요.md",
+    "3. 기술 정리.md",
+    "4. 목표 기능.md",
     "2. 이슈 사항.md",
     "4. 회의록.md",
     "2. 진행 기록.md",
