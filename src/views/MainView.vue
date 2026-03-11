@@ -1,14 +1,13 @@
 <template>
-  <main class="max-w-md mx-auto min-h-screen bg-white shadow-xl flex flex-col sm:border-x border-gray-100">
-    <header class="text-center py-5 border-b border-gray-100 bg-white sticky top-0 z-10">
-      <h1 class="text-2xl font-bold text-gray-800 tracking-tight">LearningBook</h1>
-      <p class="text-xs text-gray-500 mt-1 font-medium">Native Plugin Tester</p>
-    </header>
+  <div class="min-h-screen flex items-center justify-center bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+    <main class="w-full max-w-md bg-white shadow-2xl flex flex-col rounded-3xl border border-gray-200 overflow-hidden">
+      <header class="text-center py-5 border-b border-gray-100 bg-white">
+        <h1 class="text-2xl font-bold text-gray-800 tracking-tight">테스트 프로젝트</h1>
+      </header>
 
-    <div class="flex-1 flex flex-col gap-5 p-5 bg-gray-50">
-
-      <!-- 7. Multi WebView 테스트 (양방향 통신) -->
-      <section class="native-section border-indigo-100 bg-white mt-4 border-2 border-dashed">
+      <div class="flex flex-col justify-center gap-5 p-6 bg-gray-50">
+        <!-- 1. Multi WebView 테스트 (양방향 통신) -->
+      <section class="native-section border-indigo-100 bg-white border-2 border-dashed">
         <h2 class="section-title text-indigo-800">🖼️ Multi WebView (양방향)</h2>
         <p class="text-[11px] text-indigo-600 mb-3 px-1">부모-자식 웹뷰 간 실시간 이벤트 전달 테스트</p>
         
@@ -28,8 +27,9 @@
         </div>
       </section>
 
-    </div>
-  </main>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,64 +44,7 @@ const MultiWebView = registerPlugin<MultiWebViewPlugin>('MultiWebView')
 
 const router = useRouter()
 
-// ===== 1. 푸시 알림 =====
-const requestPushPermission = () => {
-  console.log('[Native] 푸시 권한 요청')
-}
-const checkPushToken = () => {
-  console.log('[Native] 푸시 토큰 확인')
-}
-
-// ===== 2. 화면 제어 =====
-const lockPortrait = () => {
-  console.log('[Native] 화면 세로 고정')
-}
-const lockLandscape = () => {
-  console.log('[Native] 화면 가로 고정')
-}
-
-// ===== 3. Status Bar 제어 =====
-const hideStatusBar = () => {
- if(isApp()){
-  setStatusBarVisible(false)
- }else{
-  alert('이 기능은 앱에서만 작동합니다.')
- }
-}
-
-const showStatusBar = () => {
- if(isApp()){
-  setStatusBarVisible(true)
- }else{
-  alert('이 기능은 앱에서만 작동합니다.')
- }
-}
-
-// ===== 4. 키보드 제어 =====
-const forceHideKeyboard = () => {
-  console.log('[Native] 키보드 강제 내리기')
-}
-
-// ===== 5. 햅틱 (진동) =====
-const triggerHaptic = () => {
-  console.log('[Native] 가벼운 진동(Haptic) 발생')
-  if (isApp()) {
-    nativeHaptic()
-} else {
-    alert('이 기능은 앱에서만 작동합니다.')
-}
-}
-
-// ===== 6. 보안 저장소 =====
-const secureTokenInput = ref('')
-const saveSecureToken = () => {
-  console.log(`[Native] 보안 저장소에 저장됨: ${secureTokenInput.value || '빈 값'}`)
-}
-const loadSecureToken = () => {
-  console.log('[Native] 보안 저장소에서 불러오기 버튼 클릭')
-}
-
-// ===== 7. Multi WebView 테스트 =====
+// ===== 1. Multi WebView 테스트 =====
 const subWebViewId = 'test-sub-webview'
 const lastReceivedData = ref('')
 
@@ -156,11 +99,6 @@ const handleSendMessageToChild = async () => {
             data: msg 
         })
     }
-}
-
-// 딥링크 라우팅 테스트 =====
-const goToDeepLinkTest = () => {
-  router.push('/class/1001')
 }
 </script>
 
