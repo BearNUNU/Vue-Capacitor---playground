@@ -87,9 +87,15 @@ const handleLogin = async () => {
     return;
   }
 
+  console.log('[로그인] 로그인 시도 시작:', userId.value);
+
   try {
-    const response = await fetch('http://localhost:8080/api/auth/login', {
+    const url = 'http://192.168.1.3:8080/api/auth/login';
+    console.log('[로그인] 요청 URL:', url);
+
+    const response = await fetch(url, {
       method: 'POST',
+      credentials: 'include', // 세션 쿠키 저장을 위해 필요
       headers: {
         'Content-Type': 'application/json'
       },
@@ -99,22 +105,22 @@ const handleLogin = async () => {
       })
     });
 
+    console.log('[로그인] 응답 수신 상태코드:', response.status);
+
     const data = await response.json();
+    console.log('[로그인] 응답 데이터:', JSON.stringify(data));
 
     if (data.success) {
-      // 서버에서 전달받은 토큰 저장 (임시로 localStorage 활용)
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      
+      console.log('[로그인] 로그인 성공');
       alert(data.message);
-      
       // 메인 홈 화면('/')으로 이동
       router.push('/');
     } else {
+      console.warn('[로그인] 로그인 실패:', data.message);
       alert(data.message || '로그인에 실패했습니다.');
     }
-  } catch (error) {
-    console.error('Login error:', error);
+  } catch (error: any) {
+    console.error('[로그인] 네트워크/서버 에러:', error);
     alert('서버와 통신하는 중 문제가 발생했습니다. 백엔드가 켜져있는지 확인해주세요.');
   }
 };

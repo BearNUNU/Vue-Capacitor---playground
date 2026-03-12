@@ -8,8 +8,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-// 로컬 테스트를 위해 CORS 허용 (Vue 앱 포트 5173 지원)
-@CrossOrigin(origins = "*")
+// 접속하는 모든 출처를 허용하되, 쿠키(credentials)를 포함할 수 있도록 설정
+@CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class AuthController {
 
     @PostMapping("/login")
