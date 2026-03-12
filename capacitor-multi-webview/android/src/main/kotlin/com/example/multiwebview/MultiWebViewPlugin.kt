@@ -1,5 +1,6 @@
 package com.example.multiwebview
 
+import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
@@ -32,6 +33,11 @@ class MultiWebViewPlugin : Plugin() {
             // 💡 원리 3. ERR_NAME_NOT_RESOLVED 해결 (핵심)
             // Capacitor의 Bridge는 내부적으로 로컬 서버(localhost)를 인터셉트합니다.
             // 새로 생성한 WebView도 이 인터셉트 로직을 공유해야만 http://localhost 브라우징이 가능합니다.
+            
+            // 💡 서브 웹뷰 쿠키 공유 허용 (HttpOnly 쿠키 인증 유지)
+            val cookieManager = CookieManager.getInstance()
+            cookieManager.setAcceptCookie(true)
+            cookieManager.setAcceptThirdPartyCookies(newWebView, true)
             newWebView.webViewClient =
                     object : WebViewClient() {
                         override fun shouldInterceptRequest(
@@ -43,6 +49,7 @@ class MultiWebViewPlugin : Plugin() {
                         }
 
                         // 페이지 로드 에러 핸들링 (디버깅용)
+                        @Suppress("DEPRECATION", "OverridingDeprecatedMember")
                         override fun onReceivedError(
                                 view: WebView,
                                 errorCode: Int,
