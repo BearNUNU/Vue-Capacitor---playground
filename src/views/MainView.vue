@@ -70,9 +70,9 @@ const handleOpenSubWebView = async () => {
     console.log('[Native] 서브 웹뷰 열기 시도')
     if (isApp()) {
         try {
-            // 루트 앱에서 제공하는 테스트 경로 (/sub-webview-test) 로 접속
+            // 루트 앱에서 제공하는 테스트 경로 (/sub-webview) 로 접속
             await MultiWebView.openWebView({ 
-                url: `/sub-webview-test?id=${subWebViewId}`, 
+                url: `/sub-webview?id=${subWebViewId}`, 
                 webviewId: subWebViewId 
             })
         } catch (e) {
